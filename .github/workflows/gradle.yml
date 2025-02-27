@@ -46,12 +46,15 @@ jobs:
       - name: Make zip file
         run: zip -r -qq -j ./springboot-intro-build.zip ./deploy
 
-      # S3 Bucket으로 copy
-      - name: Deliver to AWS S3
-        env:
-          AWS_ACCESS_KEY_ID: AKIAUQ4L22I5OQSDABHG
-          AWS_SECRET_ACCESS_KEY: 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
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2  # Change to your S3 region
+
+      - name: Upload to S3
         run: |
-          aws s3 cp ./springboot-intro-build.zip s3://springboot-intro-build/ \
-            --region ap-northeast-2 \
+          aws s3 cp ./springboot-intro-build.zip s3://springboot-intro-build/
         
