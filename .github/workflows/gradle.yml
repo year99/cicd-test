@@ -8,8 +8,8 @@ on:
 env:
   PROJECT_NAME: cicd_project
   BUCKET_NAME: hairpower-deploy
-  CODE_DEPLOY_APP_NAME: cicdapp
-  DEPLOYMENT_GROUP_NAME: cicdapp_deploy
+  CODE_DEPLOY_APP_NAME: springboot-intro
+  DEPLOYMENT_GROUP_NAME: deploy-group
 
 jobs:
   build:
