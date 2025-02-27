@@ -56,5 +56,5 @@ jobs:
 
       - name: Upload to S3
         run: |
-          aws s3 cp ./hairpower-deploy.zip s3://hairpower-deploy/
+          aws s3 cp ./springboot-intro-build.zip ./deploy/
         
